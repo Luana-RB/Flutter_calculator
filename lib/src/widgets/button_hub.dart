@@ -22,6 +22,10 @@ class ClearEntryButtonClick extends ButtonClick {
   ClearEntryButtonClick(super.value);
 }
 
+class DeleteButtonClick extends ButtonClick {
+  DeleteButtonClick(super.value);
+}
+
 class ButtonHub extends StatelessWidget {
   final void Function(ButtonClick click) onButtonClick;
   const ButtonHub({super.key, required this.onButtonClick});
@@ -47,7 +51,10 @@ class ButtonHub extends StatelessWidget {
             value: 'C',
             color: Colors.pink.shade400,
             onTap: (value) => onButtonClick(ClearButtonClick(value))),
-        Button(value: 'DEL', color: Colors.pink.shade400),
+        Button(
+            value: 'DEL',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(DeleteButtonClick(value))),
         Button(
             value: '7',
             color: Colors.pink.shade200,
