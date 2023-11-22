@@ -16,8 +16,8 @@ class _CalcPageState extends State<CalcPage> {
       child: Column(
         children: [
           Expanded(
-            flex: 1,
-            child: Display(value: '1'),
+            flex: 2,
+            child: Display(value: '5'),
           ),
           Expanded(
             flex: 3,

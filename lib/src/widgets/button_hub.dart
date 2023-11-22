@@ -7,40 +7,90 @@ class ButtonHub extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       primary: false,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(12),
       crossAxisSpacing: 10,
       mainAxisSpacing: 10,
       crossAxisCount: 4,
       children: <Widget>[
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[100],
-          child: const Text("He'd have you all unravel at the"),
+        Button(
+          value: '%',
+          color: Colors.pink.shade400,
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[200],
-          child: const Text('Heed not the rabble'),
+        Button(
+          value: 'CE',
+          color: Colors.pink.shade400,
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[300],
-          child: const Text('Sound of screams but the'),
+        Button(
+          value: 'C',
+          color: Colors.pink.shade400,
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[400],
-          child: const Text('Who scream'),
+        Button(
+          value: 'DEL',
+          color: Colors.pink.shade400,
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[500],
-          child: const Text('Revolution is coming...'),
+        Button(
+          value: '7',
+          color: Colors.pink.shade200,
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[600],
-          child: const Text('Revolution, they...'),
+        Button(
+          value: '8',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '9',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '+',
+          color: Colors.pink.shade400,
+        ),
+        Button(
+          value: '4',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '5',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '6',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '-',
+          color: Colors.pink.shade400,
+        ),
+        Button(
+          value: '1',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '2',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: '3',
+          color: Colors.pink.shade200,
+        ),
+        Button(
+          value: 'X',
+          color: Colors.pink.shade400,
+        ),
+        const Button(
+          value: '=',
+          color: Colors.pinkAccent,
+        ),
+        Button(
+          value: '0',
+          color: Colors.pink.shade200,
+        ),
+        const Button(
+          value: ',',
+          color: Colors.black45,
+        ),
+        Button(
+          value: '/',
+          color: Colors.pink.shade400,
         ),
       ],
     );
@@ -59,7 +109,10 @@ class Button extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       color: color,
       child: Center(
-        child: Text(value),
+        child: Text(
+          value,
+          style: const TextStyle(fontSize: 25),
+        ),
       ),
     );
   }
