@@ -18,12 +18,16 @@ class ClearButtonClick extends ButtonClick {
   ClearButtonClick(super.value);
 }
 
-class ClearEntryButtonClick extends ButtonClick {
-  ClearEntryButtonClick(super.value);
+class AnswerButtonClick extends ButtonClick {
+  AnswerButtonClick(super.value);
 }
 
 class DeleteButtonClick extends ButtonClick {
   DeleteButtonClick(super.value);
+}
+
+class PorcentageButtonClick extends ButtonClick {
+  PorcentageButtonClick(super.value);
 }
 
 class ButtonHub extends StatelessWidget {
@@ -42,15 +46,15 @@ class ButtonHub extends StatelessWidget {
         Button(
             value: '%',
             color: Colors.pink.shade400,
-            onTap: (value) => onButtonClick(CommonButtonClick(value))),
-        Button(
-            value: 'CE',
-            color: Colors.pink.shade400,
-            onTap: (value) => onButtonClick(ClearEntryButtonClick(value))),
+            onTap: (value) => onButtonClick(PorcentageButtonClick(value))),
         Button(
             value: 'C',
             color: Colors.pink.shade400,
             onTap: (value) => onButtonClick(ClearButtonClick(value))),
+        Button(
+            value: 'ANS',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(AnswerButtonClick(value))),
         Button(
             value: 'DEL',
             color: Colors.pink.shade400,
@@ -100,7 +104,7 @@ class ButtonHub extends StatelessWidget {
             color: Colors.pink.shade200,
             onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-            value: 'X',
+            value: '*',
             color: Colors.pink.shade400,
             onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
@@ -112,7 +116,7 @@ class ButtonHub extends StatelessWidget {
             color: Colors.pink.shade200,
             onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-            value: ',',
+            value: '.',
             color: Colors.black45,
             onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
