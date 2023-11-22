@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 
+sealed class ButtonClick {
+  final String value;
+
+  ButtonClick(this.value);
+}
+
+class CommonButtonClick extends ButtonClick {
+  CommonButtonClick(super.value);
+}
+
+class EqualButtonClick extends ButtonClick {
+  EqualButtonClick(super.value);
+}
+
+class ClearButtonClick extends ButtonClick {
+  ClearButtonClick(super.value);
+}
+
+class ClearEntryButtonClick extends ButtonClick {
+  ClearEntryButtonClick(super.value);
+}
+
 class ButtonHub extends StatelessWidget {
-  const ButtonHub({super.key});
+  final void Function(ButtonClick click) onButtonClick;
+  const ButtonHub({super.key, required this.onButtonClick});
 
   @override
   Widget build(BuildContext context) {
@@ -13,85 +36,82 @@ class ButtonHub extends StatelessWidget {
       crossAxisCount: 4,
       children: <Widget>[
         Button(
-          value: '%',
-          color: Colors.pink.shade400,
-        ),
+            value: '%',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: 'CE',
-          color: Colors.pink.shade400,
-        ),
+            value: 'CE',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(ClearEntryButtonClick(value))),
         Button(
-          value: 'C',
-          color: Colors.pink.shade400,
-        ),
+            value: 'C',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(ClearButtonClick(value))),
+        Button(value: 'DEL', color: Colors.pink.shade400),
         Button(
-          value: 'DEL',
-          color: Colors.pink.shade400,
-        ),
+            value: '7',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '7',
-          color: Colors.pink.shade200,
-        ),
+            value: '8',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '8',
-          color: Colors.pink.shade200,
-        ),
+            value: '9',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '9',
-          color: Colors.pink.shade200,
-        ),
+            value: '+',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '+',
-          color: Colors.pink.shade400,
-        ),
+            value: '4',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '4',
-          color: Colors.pink.shade200,
-        ),
+            value: '5',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '5',
-          color: Colors.pink.shade200,
-        ),
+            value: '6',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '6',
-          color: Colors.pink.shade200,
-        ),
+            value: '-',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '-',
-          color: Colors.pink.shade400,
-        ),
+            value: '1',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '1',
-          color: Colors.pink.shade200,
-        ),
+            value: '2',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '2',
-          color: Colors.pink.shade200,
-        ),
+            value: '3',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '3',
-          color: Colors.pink.shade200,
-        ),
+            value: 'X',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: 'X',
-          color: Colors.pink.shade400,
-        ),
-        const Button(
-          value: '=',
-          color: Colors.pinkAccent,
-        ),
+            value: '=',
+            color: Colors.pinkAccent,
+            onTap: (value) => onButtonClick(EqualButtonClick(value))),
         Button(
-          value: '0',
-          color: Colors.pink.shade200,
-        ),
-        const Button(
-          value: ',',
-          color: Colors.black45,
-        ),
+            value: '0',
+            color: Colors.pink.shade200,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
         Button(
-          value: '/',
-          color: Colors.pink.shade400,
-        ),
+            value: ',',
+            color: Colors.black45,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
+        Button(
+            value: '/',
+            color: Colors.pink.shade400,
+            onTap: (value) => onButtonClick(CommonButtonClick(value))),
       ],
     );
   }
@@ -100,18 +120,24 @@ class ButtonHub extends StatelessWidget {
 class Button extends StatelessWidget {
   final String value;
   final Color? color;
-  const Button({super.key, required this.value, this.color});
+  final void Function(String value)? onTap;
+  const Button({super.key, required this.value, this.color, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final color = this.color ?? Theme.of(context).colorScheme.primary;
-    return Container(
-      padding: const EdgeInsets.all(8),
+    return Material(
       color: color,
-      child: Center(
-        child: Text(
-          value,
-          style: const TextStyle(fontSize: 25),
+      child: InkWell(
+        onTap: onTap == null ? null : () => onTap!(value),
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          child: Center(
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 25),
+            ),
+          ),
         ),
       ),
     );

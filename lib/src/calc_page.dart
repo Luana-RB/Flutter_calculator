@@ -12,16 +12,18 @@ class CalcPage extends StatefulWidget {
 class _CalcPageState extends State<CalcPage> {
   @override
   Widget build(BuildContext context) {
-    return const Material(
+    return Material(
       child: Column(
         children: [
-          Expanded(
+          const Expanded(
             flex: 2,
             child: Display(value: '5'),
           ),
           Expanded(
             flex: 3,
-            child: ButtonHub(),
+            child: ButtonHub(onButtonClick: (click) {
+              print(click.value);
+            }),
           ),
         ],
       ),
